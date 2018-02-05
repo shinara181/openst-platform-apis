@@ -5,7 +5,7 @@ const Assert  = require("assert")
 ;
 
 const reqPrefix         = ".."
-  , openStPlatformKlass = require('/Users/kedarchandrayan/workspace/openst-platform')
+  , openStPlatformKlass = require('@openstfoundation/openst-platform')
   , openStPlatform = new openStPlatformKlass
   , BTContractInteract  = openStPlatform.contracts.brandedToken
   , TransactionLogger = openStPlatform.helpers.transactionLogger

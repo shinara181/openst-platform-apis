@@ -8,7 +8,7 @@
 //All Module Requires.
 const express = require('express')
   , createNamespace = require('continuation-local-storage').createNamespace
-  , requestSharedNameSpace = createNamespace('openST-Platform-APIs-NameSpace')
+  , requestSharedNameSpace = createNamespace('openST-Platform-NameSpace')
   , morgan = require('morgan')
   , bodyParser = require('body-parser')
   , basicAuth = require('express-basic-auth')
