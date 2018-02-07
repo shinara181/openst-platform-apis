@@ -36,13 +36,13 @@ ServicesKlass.prototype = {
 
     // Start Value Chain
     logger.step("** Start value chain");
-    var cmd = "sh " + oThis._setupFolderAbsolutePath() + "/openst-geth-v/run.sh";
+    var cmd = "sh " + oThis._setupFolderAbsolutePath() + "/openst-geth-value/run.sh";
     servicesList.push(cmd);
     oThis._asyncCommand(cmd);
 
     // Start Utility Chain
     logger.step("** Start utility chain");
-    var cmd = "sh " + oThis._setupFolderAbsolutePath() + "/openst-geth-u/run.sh";
+    var cmd = "sh " + oThis._setupFolderAbsolutePath() + "/openst-geth-utility/run.sh";
     servicesList.push(cmd);
     oThis._asyncCommand(cmd);
 
