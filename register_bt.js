@@ -39,15 +39,15 @@ String.prototype.equalsIgnoreCase = function ( compareWith ) {
 const RegisterBTKlass = function () {
   const oThis = this;
 
-  oThis.btName = "Acme Coin5"; // branded token name
-  oThis.btSymbol = "ACME5"; // branded token symbol
+  oThis.btName = "Acme Coin9"; // branded token name
+  oThis.btSymbol = "ACME9"; // branded token symbol
   oThis.btConversionRate = "10"; // branded token to OST conversion rate, 1 OST = 10 ACME
 
   oThis.reserveAddress = ''; // Member company address (will be generated and populated)
   oThis.reservePassphrase = 'acmeOnopenST'; // Member company address passphrase
 
   oThis.uuid = ''; // Member company uuid (will be generated and populated)
-  oThis.eip20 = ''; // Member company EIP20 contract address (will be generated and populated)
+  oThis.erc20 = ''; // Member company ERC20 contract address (will be generated and populated)
 };
 
 RegisterBTKlass.prototype = {
@@ -58,6 +58,7 @@ RegisterBTKlass.prototype = {
     const oThis = this;
 
     // Validate new branded token
+    logger.step("** Validating branded token");
     await oThis._validateBrandedTokenDetails();
 
     // Generate reserve address
@@ -73,9 +74,10 @@ RegisterBTKlass.prototype = {
     var statusRes = await oThis._checkProposeStatus(proposeRes.data.transaction_hash);
     var registrationStatus = statusRes.data.registration_status;
     oThis.uuid = registrationStatus['uuid'];
-    oThis.eip20 = registrationStatus['erc20_address'];
+    oThis.erc20 = registrationStatus['erc20_address'];
 
     // Add branded token to config file
+    logger.step("** Updating branded token config file");
     await oThis._updateBrandedTokenConfig();
 
     process.exit(1);
@@ -211,14 +213,16 @@ RegisterBTKlass.prototype = {
     }
 
     existingBrandedTokens[oThis.uuid] = {
-      Name: oThis.name,
-      Symbol: oThis.symbol,
+      Name: oThis.btName,
+      Symbol: oThis.btSymbol,
+      ConversionRate: oThis.btConversionRate,
       Reserve: oThis.reserveAddress,
       ReservePassphrase: oThis.reservePassphrase,
-      ConversionRate: oThis.conversion_rate,
       UUID: oThis.uuid,
-      EIP20: oThis.eip20
+      ERC20: oThis.erc20
     };
+
+    logger.info("* Branded token config:", existingBrandedTokens[oThis.uuid]);
 
     return jsonFormatter.addBrandedToken(existingBrandedTokens);
   },
