@@ -39,8 +39,8 @@ String.prototype.equalsIgnoreCase = function ( compareWith ) {
 const RegisterBTKlass = function () {
   const oThis = this;
 
-  oThis.btName = "Acme Coin9"; // branded token name
-  oThis.btSymbol = "ACME9"; // branded token symbol
+  oThis.btName = "Acme Coin2"; // branded token name
+  oThis.btSymbol = "ACME2"; // branded token symbol
   oThis.btConversionRate = "10"; // branded token to OST conversion rate, 1 OST = 10 ACME
 
   oThis.reserveAddress = ''; // Member company address (will be generated and populated)

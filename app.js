@@ -28,9 +28,17 @@ const rootPrefix    = "."
   , customMiddleware = require(rootPrefix + '/helpers/custom_middleware')
   , coreConstants   = require( rootPrefix + '/config/core_constants' )
   , responseHelper  = require( rootPrefix + '/lib/formatter/response')
-  , btRoutes        = require( rootPrefix + '/routes/bt')
-  , config          = require( coreConstants.OST_BRANDED_TOKEN_CONFIG_FILE_PATH )
+  , brandedTokenRoutes = require( rootPrefix + '/routes/branded_token')
   ;
+
+const assignParams = function (req, res, next) {
+  if (req.method == 'POST') {
+    req.decodedParams = req.body;
+  } else if (req.method == 'GET') {
+    req.decodedParams = req.query;
+  }
+  next();
+};
 
 // if the process is a master.
 if (cluster.isMaster) {
@@ -117,14 +125,7 @@ if (cluster.isMaster) {
   */
   app.use(sanitizer());
 
-  // Mount member company routes
-  // TODO: remove loop and load routes
-  for (var key in config.Members) {
-    const member = config.Members[key];
-    member.Route = "/bt" + member.Route;
-    logger.info("Mounting branded token", member.Name, "on", member.Route, "on Worker", cluster.worker.id);
-    app.use(member.Route, basicAuth(member.ApiAuth), new btRoutes(member));
-  }
+  app.use('/bt', assignParams, brandedTokenRoutes);
 
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {

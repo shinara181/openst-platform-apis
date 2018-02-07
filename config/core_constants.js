@@ -22,7 +22,7 @@ const _private = {
 
   // Generate absolute paths
   absolutePath: function (filePath) {
-    if (!path.isAbsolute(filePath)) {
+    if (filePath && !path.isAbsolute(filePath)) {
       filePath = path.join(__dirname, '/' + rootPrefix + '/' + filePath);
     }
     return filePath;
