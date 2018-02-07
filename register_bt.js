@@ -9,6 +9,7 @@ const openStPlatformObj = require('@openstfoundation/openst-platform')
   , onBoardingServices = openStPlatformObj.services.onBoarding
   , utilServices = openStPlatformObj.services.utils
   , Path = require('path')
+  , os = require('os')
 ;
 
 const rootPrefix = "."

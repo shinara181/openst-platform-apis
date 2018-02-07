@@ -9,6 +9,7 @@ const shellAsyncCmd = require('node-cmd')
   , openStPlatformObj = require('@openstfoundation/openst-platform')
   , utilServices = openStPlatformObj.services.utils
   , Path = require('path')
+  , os = require('os')
 ;
 
 // load shelljs and disable output
@@ -111,7 +112,7 @@ ServicesKlass.prototype = {
    * @private
    */
   _setupFolderAbsolutePath: function() {
-    return Path.resolve("./") + "/openst-setup";
+    return os.homedir() + "/openst-setup";
   },
 
   /**
