@@ -13,7 +13,23 @@ const openStPlatformObj = require('@openstfoundation/openst-platform')
 
 const rootPrefix = "."
   , logger = require(rootPrefix + '/helpers/custom_console_logger')
+  , jsonFormatter = require(rootPrefix + '/lib/formatter/json')
 ;
+
+/**
+ * is equal ignoring case
+ *
+ * @param {string} compareWith - string to compare with
+ *
+ * @return {booelan} true when equal
+ */
+String.prototype.equalsIgnoreCase = function ( compareWith ) {
+  const oThis = this
+    , _self = this.toLowerCase()
+    , _compareWith = String( compareWith ).toLowerCase();
+
+  return _self === _compareWith;
+};
 
 /**
  * Constructor for proposing branded token
@@ -23,15 +39,15 @@ const rootPrefix = "."
 const RegisterBTKlass = function () {
   const oThis = this;
 
-  this.btName = "Acme Coin5"; // branded token name
-  this.btSymbol = "ACME5"; // branded token symbol
-  this.btConversionRate = "10"; // branded token to OST conversion rate, 1 OST = 10 ACME
+  oThis.btName = "Acme Coin5"; // branded token name
+  oThis.btSymbol = "ACME5"; // branded token symbol
+  oThis.btConversionRate = "10"; // branded token to OST conversion rate, 1 OST = 10 ACME
 
-  this.reserveAddress = ''; // Member company address (will be generated and populated)
-  this.reservePassphrase = 'acmeOnopenST'; // Member company address passphrase
+  oThis.reserveAddress = ''; // Member company address (will be generated and populated)
+  oThis.reservePassphrase = 'acmeOnopenST'; // Member company address passphrase
 
-  this.uuid = ''; // Member company uuid (will be generated and populated)
-  this.erc20 = ''; // Member company ERC20 contract address (will be generated and populated)
+  oThis.uuid = ''; // Member company uuid (will be generated and populated)
+  oThis.eip20 = ''; // Member company EIP20 contract address (will be generated and populated)
 };
 
 RegisterBTKlass.prototype = {
@@ -40,6 +56,9 @@ RegisterBTKlass.prototype = {
    */
   start: async function () {
     const oThis = this;
+
+    // Validate new branded token
+    await oThis._validateBrandedTokenDetails();
 
     // Generate reserve address
     logger.step("** Generating reserve address");
@@ -52,12 +71,12 @@ RegisterBTKlass.prototype = {
 
     // Monitor the BT proposal response
     var statusRes = await oThis._checkProposeStatus(proposeRes.data.transaction_hash);
-    console.log(statusRes);
     var registrationStatus = statusRes.data.registration_status;
-    this.uuid = registrationStatus['uuid'];
-    logger.info('* BT UUID: ', this.uuid);
-    this.erc20 = registrationStatus['erc20_address'];
-    logger.info('* BT ERC20: ', this.erc20);
+    oThis.uuid = registrationStatus['uuid'];
+    oThis.eip20 = registrationStatus['erc20_address'];
+
+    // Add branded token to config file
+    await oThis._updateBrandedTokenConfig();
 
     process.exit(1);
 
@@ -72,7 +91,7 @@ RegisterBTKlass.prototype = {
   _generateAddress: async function() {
     const oThis = this
     ;
-    const addressObj = new utilServices.generateAddress({chain: 'utility', passphrase: this.reservePassphrase})
+    const addressObj = new utilServices.generateAddress({chain: 'utility', passphrase: oThis.reservePassphrase})
       , addressResponse = await addressObj.perform();
     if (addressResponse.isFailure()) {
       logger.error("* Reserve address generation failed with error:", addressResponse);
@@ -149,6 +168,69 @@ RegisterBTKlass.prototype = {
 
     });
 
+  },
+
+  /**
+   * Check for duplicate branded token
+   *
+   * @return {boolean}
+   * @private
+   */
+  _validateBrandedTokenDetails: async function() {
+    const oThis = this
+      , existingBrandedTokens = await oThis._loadBrandedTokenConfig()
+    ;
+    for (var uuid in existingBrandedTokens) {
+      var brandedToken = existingBrandedTokens[uuid];
+      if (oThis.btName.equalsIgnoreCase(brandedToken.Name)) {
+        logger.error("* Branded token name already registered and present in BT config file");
+        process.exit(1);
+      }
+      if (oThis.btSymbol.equalsIgnoreCase(brandedToken.Symbol)) {
+        logger.error("* Branded token symbol already registered and present in BT config file");
+        process.exit(1);
+      }
+    }
+    return true;
+  },
+
+  /**
+   * Update branded token details
+   *
+   * @return {promise<object>} - branded tokens list
+   * @private
+   */
+  _updateBrandedTokenConfig: async function() {
+    const oThis = this
+      , existingBrandedTokens = await oThis._loadBrandedTokenConfig()
+    ;
+
+    if (existingBrandedTokens[oThis.uuid]) {
+      logger.error("* Branded token uuid already registered and present in BT config file");
+      process.exit(1);
+    }
+
+    existingBrandedTokens[oThis.uuid] = {
+      Name: oThis.name,
+      Symbol: oThis.symbol,
+      Reserve: oThis.reserveAddress,
+      ReservePassphrase: oThis.reservePassphrase,
+      ConversionRate: oThis.conversion_rate,
+      UUID: oThis.uuid,
+      EIP20: oThis.eip20
+    };
+
+    return jsonFormatter.addBrandedToken(existingBrandedTokens);
+  },
+
+  /**
+   * Load branded token details
+   *
+   * @return {promise<object>} - branded tokens list
+   * @private
+   */
+  _loadBrandedTokenConfig: async function() {
+    return await jsonFormatter.getBrandedToken();
   }
 };
 

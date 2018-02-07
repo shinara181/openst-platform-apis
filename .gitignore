@@ -13,6 +13,7 @@ package-lock.json
 # Runtime data
 pids
 openst-setup
+branded_tokens.json
 *.pid
 *.seed
 *.pid.lock
