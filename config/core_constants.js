@@ -29,11 +29,8 @@ const _private = {
   }
 };
 
-// Current environment
-_private.define("ENVIRONMENT", process.env.ENVIRONMENT);
-
-// file path of the member config file.
-_private.define('OST_MEMBER_CONFIG_FILE_PATH', _private.absolutePath(process.env.OST_MEMBER_CONFIG_FILE_PATH));
+// file path of the branded token config file.
+_private.define('OST_BRANDED_TOKEN_CONFIG_FILE_PATH', _private.absolutePath("branded_tokens.json"));
 
 // Folder path of the transfer logs
-_private.define('OST_TRANSACTION_LOGS_FOLDER', _private.absolutePath(process.env.OST_TRANSACTION_LOGS_FOLDER));
+_private.define('OST_TRANSACTION_LOGS_FOLDER', _private.absolutePath("logs/"));

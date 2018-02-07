@@ -29,7 +29,7 @@ const rootPrefix    = "."
   , coreConstants   = require( rootPrefix + '/config/core_constants' )
   , responseHelper  = require( rootPrefix + '/lib/formatter/response')
   , btRoutes        = require( rootPrefix + '/routes/bt')
-  , config          = require( coreConstants.OST_MEMBER_CONFIG_FILE_PATH )
+  , config          = require( coreConstants.OST_BRANDED_TOKEN_CONFIG_FILE_PATH )
   ;
 
 // if the process is a master.
