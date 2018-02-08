@@ -3,7 +3,23 @@ const express = require('express')
   , rootPrefix = '..'
   , responseHelper = require(rootPrefix + '/lib/formatter/response');
 
-/* Get details of branded token for given uuid */
+/**
+ * Branded Token routes.<br><br>
+ * Base url for all routes given below is: <b>base_url = /bt/</b>
+ *
+ * @module routes/branded_token
+ */
+
+
+/**
+ * Get details of branded token for given uuid
+ *
+ * @name Branded Token Details
+ *
+ * @route {GET} {base_url}/details
+ *
+ * @routeparam {Integer} :uuid - Branded Token UUID
+ */
 router.get('/details', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -27,7 +43,15 @@ router.get('/details', function (req, res, next) {
   });
 });
 
-/* Get Reserve address of branded token for given uuid */
+/**
+ * Get Reserve address of branded token for given uuid
+ *
+ * @name Branded Token Reserve Address
+ *
+ * @route {GET} {base_url}/reserve
+ *
+ * @routeparam {Integer} :uuid - Branded Token UUID
+ */
 router.get('/reserve', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -53,7 +77,14 @@ router.get('/reserve', function (req, res, next) {
   });
 });
 
-/* Create Ethereum address for user in utility chain */
+/**
+ * Create Ethereum address for user in utility chain
+ *
+ * @name Create User on Utility chain
+ *
+ * @route {POST} {base_url}/users/create
+ *
+ */
 router.post('/users/create', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -75,7 +106,16 @@ router.post('/users/create', function (req, res, next) {
   });
 });
 
-/* Get Balance of Address for given uuid */
+/**
+ * Get Balance of Address for given Branded Token uuid
+ *
+ * @name Branded Token User Balance
+ *
+ * @route {GET} {base_url}/balanceOf
+ *
+ * @routeparam {Integer} :uuid - Branded Token UUID
+ * @routeparam {Integer} :address - User ERC20 Address
+ */
 router.get('/balanceOf', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -99,7 +139,15 @@ router.get('/balanceOf', function (req, res, next) {
   });
 });
 
-/* Get ST Prime Balance of Address for given uuid */
+/**
+ * Get Gas Balance of Address
+ *
+ * @name User Gas Balance
+ *
+ * @route {GET} {base_url}/gas-balance
+ *
+ * @routeparam {Integer} :address - User ERC20 Address
+ */
 router.get('/gas-balance', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -123,7 +171,15 @@ router.get('/gas-balance', function (req, res, next) {
   });
 });
 
-/* Get Transaction logs for given Transaction Hash */
+/**
+ * Get Transaction Logs for given Transaction Hash
+ *
+ * @name Transaction Logs
+ *
+ * @route {GET} {base_url}/logs
+ *
+ * @routeparam {String} :transaction_hash - Transaction Hash for lookup
+ */
 router.get('/logs', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -147,7 +203,18 @@ router.get('/logs', function (req, res, next) {
   });
 });
 
-/* Transfer Amount from sender address to receiver address for a given branded token UUID */
+/**
+ * Transfer Amount from sender address to receiver address for a given branded token UUID
+ *
+ * @name Transfer Amount
+ *
+ * @route {POST} {base_url}/transfer
+ *
+ * @routeparam {String} :uuid - Branded Token UUID
+ * @routeparam {String} :sender - Sender ERC20 Address
+ * @routeparam {String} :recipient - Recipient ERC20 Address
+ * @routeparam {Integer} :amount - Amount of Branded Token to transfer
+ */
 router.post('/transfer', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
@@ -171,7 +238,17 @@ router.post('/transfer', function (req, res, next) {
   });
 });
 
-/* Transfer Amount from sender address to receiver address for a given branded token UUID */
+/**
+ * Transfer Gas amount from sender address to receiver address
+ *
+ * @name Transfer Gas
+ *
+ * @route {POST} {base_url}/transfer-gas
+ *
+ * @routeparam {String} :sender - Sender ERC20 Address
+ * @routeparam {String} :recipient - Recipient ERC20 Address
+ * @routeparam {Integer} :amount - Amount of Branded Token to transfer
+ */
 router.post('/transfer-gas', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
