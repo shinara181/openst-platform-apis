@@ -37,8 +37,9 @@ CreateUserKlass.prototype = {
   },
 
   generateRandomPassword: function(){
-    var pwd = new Buffer(crypto.randomBytes(16));
-    return (pwd.toString('hex').slice(0, 16));
+    // var pwd = new Buffer(crypto.randomBytes(16));
+    // return (pwd.toString('hex').slice(0, 16));
+    return 'testtest'
   }
 
 };

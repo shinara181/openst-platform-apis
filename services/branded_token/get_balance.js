@@ -3,13 +3,12 @@
 /**
  * Get Branded Token Balance from Utility chain
  *
- * @module services/users/create_new_user
+ * @module services/branded_token/get_balance
  */
 
-  const crypto = require('crypto')
-  , openStPlatform = require('@openstfoundation/openst-platform')
+  const openStPlatform = require('../../../openst-platform/index')
   , openStGetBalanceKlass = openStPlatform.services.balance.brandedToken
-  , getBTAddressKlass = require('../../services/branded_token/get_bt_address')
+  , getBTAddressKlass = require('./get_bt_address')
   ;
 
 /**

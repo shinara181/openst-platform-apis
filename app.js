@@ -32,11 +32,7 @@ const rootPrefix    = "."
   ;
 
 const assignParams = function (req, res, next) {
-  if (req.method == 'POST') {
-    req.decodedParams = req.body;
-  } else if (req.method == 'GET') {
-    req.decodedParams = req.query;
-  }
+  req.decodedParams = req.query;
   next();
 };
 
@@ -126,6 +122,10 @@ if (cluster.isMaster) {
   app.use(sanitizer());
 
   app.use('/bt', assignParams, brandedTokenRoutes);
+  
+  app.use('/', assignParams, function (req, res, next) {
+    return responseHelper.successWithData({}).renderResponse(res, 200);
+  });
 
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {

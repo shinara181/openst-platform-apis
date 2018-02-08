@@ -16,7 +16,8 @@ const rootPrefix = "../.."
 /**
  * Get Reserve address service
  *
- * @param {object} params - this is object with keys - uuid (BT UUID), address_type (Address Type like Reserve or ERC20 contract address)
+ * @param {object} params - this is object with keys - uuid (BT UUID),
+ *                      address_type (Address Type like Reserve or ERC20 contract address)
  *
  * @constructor
  */
@@ -24,7 +25,7 @@ const GetBTAddressKlass = function(params){
   const oThis = this;
 
   oThis.uuid = params.uuid;
-  oThis.addressType = params.address_type
+  oThis.addressType = params.address_type;
 };
 
 GetBTAddressKlass.prototype = {

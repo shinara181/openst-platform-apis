@@ -57,7 +57,7 @@ router.get('/reserve', function (req, res, next) {
 router.post('/users/create', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
-      , createUserKlass = require(rootPrefix + '/services/users/create_new_user')
+      , createUserKlass = require(rootPrefix + '/services/utils/create_new_user')
       , createUserObj = new createUserKlass()
     ;
 
@@ -79,7 +79,7 @@ router.post('/users/create', function (req, res, next) {
 router.get('/balanceOf', function (req, res, next) {
   const performer = function() {
     const decodedParams = req.decodedParams
-      , getBalanceKlass = require(rootPrefix + '/services/users/get_balance')
+      , getBalanceKlass = require(rootPrefix + '/services/branded_token/get_balance')
       , getDetails = new getBalanceKlass(decodedParams)
     ;
 
@@ -96,6 +96,102 @@ router.get('/balanceOf', function (req, res, next) {
   Promise.resolve(performer()).catch(function (err) {
     console.error(err);
     responseHelper.error('r_t_4', 'Something went wrong').renderResponse(res)
+  });
+});
+
+/* Get ST Prime Balance of Address for given uuid */
+router.get('/gas-balance', function (req, res, next) {
+  const performer = function() {
+    const decodedParams = req.decodedParams
+      , getBalanceKlass = require(rootPrefix + '/services/st_prime/get_balance')
+      , getDetails = new getBalanceKlass(decodedParams)
+    ;
+
+    console.log("decodedParams--", decodedParams);
+
+    const renderResult = function(result) {
+      return result.renderResponse(res);
+    };
+
+    return getDetails.perform()
+      .then(renderResult);
+  };
+
+  Promise.resolve(performer()).catch(function (err) {
+    console.error(err);
+    responseHelper.error('r_t_5', 'Something went wrong').renderResponse(res)
+  });
+});
+
+/* Get Transaction logs for given Transaction Hash */
+router.get('/logs', function (req, res, next) {
+  const performer = function() {
+    const decodedParams = req.decodedParams
+      , getTrxKlass = require(rootPrefix + '/services/utils/get_transaction_logs')
+      , getDetails = new getTrxKlass(decodedParams)
+    ;
+
+    console.log("decodedParams--", decodedParams);
+
+    const renderResult = function(result) {
+      return result.renderResponse(res);
+    };
+
+    return getDetails.perform()
+      .then(renderResult);
+  };
+
+  Promise.resolve(performer()).catch(function (err) {
+    console.error(err);
+    responseHelper.error('r_t_6', 'Something went wrong').renderResponse(res)
+  });
+});
+
+/* Transfer Amount from sender address to receiver address for a given branded token UUID */
+router.post('/transfer', function (req, res, next) {
+  const performer = function() {
+    const decodedParams = req.decodedParams
+      , transferBTKlass = require(rootPrefix + '/services/branded_token/transfer')
+      , transferObj = new transferBTKlass(decodedParams)
+    ;
+
+    console.log("decodedParams--", decodedParams);
+
+    const renderResult = function(result) {
+      return result.renderResponse(res);
+    };
+
+    return transferObj.perform()
+      .then(renderResult);
+  };
+
+  Promise.resolve(performer()).catch(function (err) {
+    console.error(err);
+    responseHelper.error('r_t_7', 'Something went wrong').renderResponse(res)
+  });
+});
+
+/* Transfer Amount from sender address to receiver address for a given branded token UUID */
+router.post('/transfer-gas', function (req, res, next) {
+  const performer = function() {
+    const decodedParams = req.decodedParams
+      , transferBTKlass = require(rootPrefix + '/services/st_prime/transfer')
+      , transferObj = new transferBTKlass(decodedParams)
+    ;
+
+    console.log("decodedParams--", decodedParams);
+
+    const renderResult = function(result) {
+      return result.renderResponse(res);
+    };
+
+    return transferObj.perform()
+      .then(renderResult);
+  };
+
+  Promise.resolve(performer()).catch(function (err) {
+    console.error(err);
+    responseHelper.error('r_t_7', 'Something went wrong').renderResponse(res)
   });
 });
 
