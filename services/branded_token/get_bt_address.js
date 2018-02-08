@@ -10,7 +10,8 @@ const rootPrefix = "../.."
   , fs = require('fs')
   , logger = require(rootPrefix + '/helpers/custom_console_logger')
   , responseHelper = require(rootPrefix + "/lib/formatter/response")
-  ;
+  , coreConstants   = require( rootPrefix + '/config/core_constants' )
+;
 
 /**
  * Get Reserve address service
@@ -37,7 +38,7 @@ GetBTAddressKlass.prototype = {
     const oThis = this;
 
     return new Promise(function(onResolve, onReject) {
-      fs.readFile('branded_tokens.json', 'utf8', function (err, content) {
+      fs.readFile(coreConstants.OST_BRANDED_TOKEN_CONFIG_FILE_PATH, 'utf8', function (err, content) {
         if (err) {
           logger.error(err);
           return onResolve(responseHelper.error("s_bt_gra_1", err));

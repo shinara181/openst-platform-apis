@@ -6,6 +6,7 @@
 
 // Load required packages
 const path = require('path')
+  , os = require('os')
   , rootPrefix = ".."
 ;
 
@@ -30,7 +31,7 @@ const _private = {
 };
 
 // file path of the branded token config file.
-_private.define('OST_BRANDED_TOKEN_CONFIG_FILE_PATH', _private.absolutePath("branded_tokens.json"));
+_private.define('OST_BRANDED_TOKEN_CONFIG_FILE_PATH',  os.homedir() + "/openst-setup/branded_tokens.json");
 
 // Folder path of the transfer logs
 _private.define('OST_TRANSACTION_LOGS_FOLDER', _private.absolutePath("logs/"));
