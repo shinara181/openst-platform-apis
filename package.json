@@ -2,9 +2,19 @@
   "name": "openst-platform-apis",
   "version": "0.9.2",
   "description": "OpenST Platform sample restful api implementation",
+  "keywords": [
+    "web3",
+    "openST",
+    "OST",
+    "simpletoken",
+    "utility-token",
+    "ethereum",
+    "erc20"
+  ],
   "private": true,
   "homepage": "https://openst.org",
   "author": "OpenST Ltd.",
+  "license": "LGPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/OpenSTFoundation/openst-platform-apis.git"
@@ -18,23 +28,23 @@
   },
   "dependencies": {
     "@openstfoundation/openst-platform": "file:../openst-platform",
-    "bignumber.js": "^4.1.0",
-    "body-parser": "~1.18.2",
-    "cluster": "^0.7.7",
-    "continuation-local-storage": "^3.2.1",
+    "bignumber.js": "4.1.0",
+    "body-parser": "1.18.2",
+    "cluster": "0.7.7",
+    "continuation-local-storage": "3.2.1",
     "cookie-parser": "1.4.3",
     "debug": "2.2.0",
     "express": "4.14.0",
     "express-basic-auth": "1.1.2",
     "express-sanitized": "0.5.1",
     "helmet": "3.9.0",
-    "morgan": "^1.9.0",
+    "morgan": "1.9.0",
     "request": "2.81.0",
     "shortid": "2.2.8",
-    "underscore": "^1.8.3"
+    "underscore": "1.8.3"
   },
   "devDependencies": {
-    "ink-docstrap": "^1.3.2",
-    "jsdoc": "~3.5.5"
+    "ink-docstrap": "1.3.2",
+    "jsdoc": "3.5.5"
   }
 }
