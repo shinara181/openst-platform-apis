@@ -1,9 +1,20 @@
 {
   "name": "openst-platform-apis",
   "version": "0.9.2",
+  "description": "OpenST Platform sample restful api implementation",
   "private": true,
+  "homepage": "https://openst.org",
+  "author": "OpenST Ltd.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenSTFoundation/openst-platform-apis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenSTFoundation/openst-platform-apis/issues"
+  },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "make-docs": "node_modules/.bin/jsdoc -c .jsdoc.json"
   },
   "dependencies": {
     "@openstfoundation/openst-platform": "file:../openst-platform",
