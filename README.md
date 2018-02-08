@@ -8,9 +8,10 @@ This project show the sample restful api implementation of openST Platform.
   > npm install
 ```
   
-* Setup openST Platform by referring the CONFIGURE.md in openst-platform repository
-  - NOTE: Use "node_modules/@openstfoundation/openst-platform/" before any node script
-  - Example: 
+* Setup openST Platform by referring the CONFIGURE.md in openst-platform repository. 
+NOTE: Use "node_modules/@openstfoundation/openst-platform/" before any node script. 
+Example: 
+  
 ```bash
   > node node_modules/@openstfoundation/openst-platform/tools/setup/start_services.js
 ```

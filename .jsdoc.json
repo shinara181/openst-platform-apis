@@ -8,7 +8,9 @@
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
-  "plugins": [],
+  "plugins": [
+    "jsdoc-route-plugin"
+  ],
   "recurseDepth": 5,
   "templates": {
     "systemName"            : "OpenST Sample Restful APIs",
