@@ -53,16 +53,19 @@ TransferBTKlass.prototype = {
     console.log(amountInWei);
 
     // Get config object for given uuid
-    var configObj = new getBTAddressKlass({address_type: "ERC20", uuid: oThis.uuid});
+    var configObj = new getBTAddressKlass({address_type: "ERC20", uuid: oThis.uuid, full_config: 1});
     var configResponse = await configObj.perform();
 
     if(configResponse.isFailure()){
       return Promise.resolve(responseHelper.error("s_bt_t_2", "Invalid UUID"));
     }
 
+    // Check if sender address is Reserve address then user reserve passphrase else user's passphrase
+    var senderPassphrase = (configResponse.data["Reserve"] == oThis.senderAddress) ? configResponse.data["ReservePassphrase"] : "testtest";
+
     // Transfer branded token from sender to recipient
-    var transferObj = new transferBTKlass({erc20_address: configResponse.data.address,
-      sender_address: oThis.senderAddress, sender_passphrase: 'testtest',
+    var transferObj = new transferBTKlass({erc20_address: configResponse.data["ERC20"],
+      sender_address: oThis.senderAddress, sender_passphrase: senderPassphrase,
       recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei});
 
     var response = await transferObj.perform();

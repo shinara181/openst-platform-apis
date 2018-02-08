@@ -239,12 +239,13 @@ router.post('/transfer', function (req, res, next) {
 });
 
 /**
- * Transfer Gas amount from sender address to receiver address
+ * Transfer Gas amount from sender address to receiver address for a given branded token UUID
  *
  * @name Transfer Gas
  *
  * @route {POST} {base_url}/transfer-gas
  *
+ * @routeparam {String} :uuid - Branded Token UUID
  * @routeparam {String} :sender - Sender ERC20 Address
  * @routeparam {String} :recipient - Recipient ERC20 Address
  * @routeparam {Integer} :amount - Amount of Branded Token to transfer

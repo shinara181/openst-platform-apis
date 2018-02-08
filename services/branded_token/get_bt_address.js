@@ -17,7 +17,8 @@ const rootPrefix = "../.."
  * Get Reserve address service
  *
  * @param {object} params - this is object with keys - uuid (BT UUID),
- *                      address_type (Address Type like Reserve or ERC20 contract address)
+ *                      address_type (Address Type like Reserve or ERC20 contract address),
+ *                      full_config (Flag for getting full config of Branded Token)
  *
  * @constructor
  */
@@ -26,6 +27,7 @@ const GetBTAddressKlass = function(params){
 
   oThis.uuid = params.uuid;
   oThis.addressType = params.address_type;
+  oThis.fullConfig = params.full_config;
 };
 
 GetBTAddressKlass.prototype = {
@@ -52,6 +54,8 @@ GetBTAddressKlass.prototype = {
           var uuidConfig = fileJson[oThis.uuid];
           if(!uuidConfig || !uuidConfig[oThis.addressType]){
             return onResolve(responseHelper.error("s_bt_gra_3", oThis.addressType + " Address not found for uuid."));
+          } else if(oThis.fullConfig){
+            return onResolve(responseHelper.successWithData(uuidConfig));
           }
 
           return onResolve(responseHelper.successWithData({address: uuidConfig[oThis.addressType]}));

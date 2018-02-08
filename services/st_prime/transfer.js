@@ -27,6 +27,7 @@
 const TransferSTPrimeKlass = function(params){
   const oThis = this;
 
+  oThis.uuid = params.uuid;
   oThis.senderAddress = params.sender;
   oThis.recipientAddress = params.recipient;
   oThis.amount = params.amount;
@@ -50,8 +51,19 @@ TransferSTPrimeKlass.prototype = {
     // Convert amount in wei
     var amountInWei = new BigNumber(oThis.amount).mul((new BigNumber(10)).pow(18));
 
+    // Get config object for given uuid
+    var configObj = new getBTAddressKlass({address_type: "ERC20", uuid: oThis.uuid, full_config: 1});
+    var configResponse = await configObj.perform();
+
+    if(configResponse.isFailure()){
+      return Promise.resolve(responseHelper.error("s_stp_t_2", "Invalid UUID"));
+    }
+
+    // Check if sender address is Reserve address then user reserve passphrase else user's passphrase
+    var senderPassphrase = (configResponse.data["Reserve"] == oThis.senderAddress) ? configResponse.data["ReservePassphrase"] : "testtest";
+
     // Transfer ST Prime from sender to recipient
-    var transferObj = new transferSTPKlass({sender_address: oThis.senderAddress, sender_passphrase: 'testtest',
+    var transferObj = new transferSTPKlass({sender_address: oThis.senderAddress, sender_passphrase: senderPassphrase,
       recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei});
 
     var response = await transferObj.perform();
