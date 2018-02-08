@@ -29,7 +29,6 @@ const rootPrefix    = "."
   , coreConstants   = require( rootPrefix + '/config/core_constants' )
   , responseHelper  = require( rootPrefix + '/lib/formatter/response')
   , brandedTokenRoutes = require( rootPrefix + '/routes/branded_token')
-  , btUsersRoutes = require( rootPrefix + '/routes/bt_users')
   ;
 
 const assignParams = function (req, res, next) {
@@ -127,7 +126,6 @@ if (cluster.isMaster) {
   app.use(sanitizer());
 
   app.use('/bt', assignParams, brandedTokenRoutes);
-  app.use('/bt/users', assignParams, btUsersRoutes);
 
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {
