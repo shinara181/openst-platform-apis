@@ -18,7 +18,7 @@ const express = require('express')
  *
  * @route {GET} {base_url}/details
  *
- * @routeparam {Integer} :uuid - Branded Token UUID
+ * @routeparam {String} :uuid - Branded Token UUID
  */
 router.get('/details', function (req, res, next) {
   const performer = function() {
@@ -50,7 +50,7 @@ router.get('/details', function (req, res, next) {
  *
  * @route {GET} {base_url}/reserve
  *
- * @routeparam {Integer} :uuid - Branded Token UUID
+ * @routeparam {String} :uuid - Branded Token UUID
  */
 router.get('/reserve', function (req, res, next) {
   const performer = function() {
@@ -113,8 +113,8 @@ router.post('/users/create', function (req, res, next) {
  *
  * @route {GET} {base_url}/balanceOf
  *
- * @routeparam {Integer} :uuid - Branded Token UUID
- * @routeparam {Integer} :address - User ERC20 Address
+ * @routeparam {String} :uuid - Branded Token UUID
+ * @routeparam {String} :address - User ERC20 Address
  */
 router.get('/balanceOf', function (req, res, next) {
   const performer = function() {
@@ -146,7 +146,7 @@ router.get('/balanceOf', function (req, res, next) {
  *
  * @route {GET} {base_url}/gas-balance
  *
- * @routeparam {Integer} :address - User ERC20 Address
+ * @routeparam {String} :address - User ERC20 Address
  */
 router.get('/gas-balance', function (req, res, next) {
   const performer = function() {
@@ -239,12 +239,13 @@ router.post('/transfer', function (req, res, next) {
 });
 
 /**
- * Transfer Gas amount from sender address to receiver address
+ * Transfer Gas amount from sender address to receiver address for a given branded token UUID
  *
  * @name Transfer Gas
  *
  * @route {POST} {base_url}/transfer-gas
  *
+ * @routeparam {String} :uuid - Branded Token UUID
  * @routeparam {String} :sender - Sender ERC20 Address
  * @routeparam {String} :recipient - Recipient ERC20 Address
  * @routeparam {Integer} :amount - Amount of Branded Token to transfer

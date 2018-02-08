@@ -178,7 +178,7 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
             </thead>
             <tr>
             <td class="name">:uuid</td>
-            <td class="type">Integer</td>
+            <td class="type">String</td>
             
             
             <td class="description last">Branded Token UUID</td>
@@ -265,7 +265,7 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
             </thead>
             <tr>
             <td class="name">:uuid</td>
-            <td class="type">Integer</td>
+            <td class="type">String</td>
             
             
             <td class="description last">Branded Token UUID</td>
@@ -352,13 +352,13 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
             </thead>
             <tr>
             <td class="name">:uuid</td>
-            <td class="type">Integer</td>
+            <td class="type">String</td>
             
             
             <td class="description last">Branded Token UUID</td>
           </tr><tr>
             <td class="name">:address</td>
-            <td class="type">Integer</td>
+            <td class="type">String</td>
             
             
             <td class="description last">User ERC20 Address</td>
@@ -691,7 +691,7 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
                             <td class="name last">{base_url}/transfer-gas</td>
                             </tr>
                             </table>
-                            Transfer Gas amount from sender address to receiver address
+                            Transfer Gas amount from sender address to receiver address for a given branded token UUID
                             <h5>Route Parameters:</h5>
           <table class="params">
             <thead>
@@ -704,6 +704,12 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
               </tr>
             </thead>
             <tr>
+            <td class="name">:uuid</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last">Branded Token UUID</td>
+          </tr><tr>
             <td class="name">:sender</td>
             <td class="type">String</td>
             
@@ -804,7 +810,7 @@ Base url for all routes given below is: <b>base_url = /bt/</b></div>
             </thead>
             <tr>
             <td class="name">:address</td>
-            <td class="type">Integer</td>
+            <td class="type">String</td>
             
             
             <td class="description last">User ERC20 Address</td>
