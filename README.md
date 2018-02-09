@@ -1,5 +1,5 @@
-# openST Platform Restful APIs Setup
+# OpenST Sample Restful APIs for Platform
 
-This project show the sample restful api implementation of openST Platform.
+This project show the sample Restful api implementation of openST Platform.
 
 On how to setup and use the APIs please refer OpenST Platform [CONFIGURE.md](https://github.com/OpenSTFoundation/openst-platform/blob/develop/CONFIGURE.md).
