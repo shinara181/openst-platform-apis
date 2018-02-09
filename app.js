@@ -42,7 +42,7 @@ if (cluster.isMaster) {
   process.title = "OpenST Platform API node master";
 
   // Fork workers equal to number of CPUs
-  const numWorkers = process.env.WORKERS || require('os').cpus().length;
+  const numWorkers = (process.env.OST_CACHING_ENGINE=='none' ? 1 : (process.env.WORKERS || require('os').cpus().length));
 
   for (var i = 0; i < numWorkers; i++) {
     // Spawn a new worker process.
