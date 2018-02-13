@@ -30,7 +30,11 @@ router.get('/details', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return getDetails.perform()
@@ -64,7 +68,11 @@ router.get('/reserve', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return getDetails.perform()
@@ -93,7 +101,11 @@ router.post('/users/create', function (req, res, next) {
     ;
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return createUserObj.perform()
@@ -126,7 +138,11 @@ router.get('/balanceOf', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return getDetails.perform()
@@ -158,7 +174,11 @@ router.get('/gas-balance', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return getDetails.perform()
@@ -190,7 +210,11 @@ router.get('/logs', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return getDetails.perform()
@@ -225,7 +249,11 @@ router.post('/transfer', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return transferObj.perform()
@@ -260,7 +288,11 @@ router.post('/transfer-gas', function (req, res, next) {
     console.log("decodedParams--", decodedParams);
 
     const renderResult = function(result) {
-      return result.renderResponse(res);
+      if(result.isSuccess()){
+        return responseHelper.successWithData(result.data).renderResponse(res);
+      } else {
+        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+      }
     };
 
     return transferObj.perform()
