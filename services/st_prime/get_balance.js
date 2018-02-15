@@ -6,7 +6,7 @@
  * @module services/users/get_stprime_balance
  */
 
-  const openStPlatform = require('../../../openst-platform/index')
+  const openStPlatform = require('@openstfoundation/openst-platform')
   , openStGetStPrimeBalanceKlass = openStPlatform.services.balance.simpleTokenPrime
   ;
 

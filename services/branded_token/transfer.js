@@ -52,7 +52,6 @@ TransferBTKlass.prototype = {
 
     // Convert amount in wei
     var amountInWei = new BigNumber(oThis.amount).mul((new BigNumber(10)).pow(18));
-    console.log(amountInWei);
 
     // Get config object for given uuid
     var configObj = new getBTAddressKlass({address_type: "ERC20", uuid: oThis.uuid, full_config: 1});

@@ -6,7 +6,7 @@
  * @module services/utils/get_transaction_logs
  */
 
-  const openStPlatform = require('../../../openst-platform/index')
+  const openStPlatform = require('@openstfoundation/openst-platform')
   , getTransactionReceiptKlass = openStPlatform.services.transaction.getTransactionReceipt
   ;
 
