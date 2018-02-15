@@ -33,7 +33,7 @@ router.get('/details', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -71,7 +71,7 @@ router.get('/reserve', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -104,7 +104,7 @@ router.post('/users/create', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -141,7 +141,7 @@ router.get('/balanceOf', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -177,7 +177,7 @@ router.get('/gas-balance', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -213,7 +213,7 @@ router.get('/logs', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -252,7 +252,7 @@ router.post('/transfer', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
@@ -291,7 +291,7 @@ router.post('/transfer-gas', function (req, res, next) {
       if(result.isSuccess()){
         return responseHelper.successWithData(result.data).renderResponse(res);
       } else {
-        return responseHelper.error(result.err.code, result.err.message).renderResponse(res);
+        return responseHelper.error(result.err.code, result.err.msg).renderResponse(res);
       }
     };
 
