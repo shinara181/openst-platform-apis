@@ -20,7 +20,8 @@
 /**
  * Transfer ST Prime from sender to recipient for a given UUID in utility chain
  *
- * @param {object} params - this is object with keys - sender - Sender Address, recipient - Recipient Address, amount - Amount
+ * @param {object} params - this is object with keys - sender - Sender Address, recipient - Recipient Address,
+ *                                                amount - Amount, options: {tag: TransactionType like upvote}
  *
  * @constructor
  */
@@ -31,6 +32,7 @@ const TransferSTPrimeKlass = function(params){
   oThis.senderAddress = params.sender;
   oThis.recipientAddress = params.recipient;
   oThis.amount = params.amount;
+  oThis.options = params.options;
 };
 
 TransferSTPrimeKlass.prototype = {
@@ -64,7 +66,7 @@ TransferSTPrimeKlass.prototype = {
 
     // Transfer ST Prime from sender to recipient
     var transferObj = new transferSTPKlass({sender_address: oThis.senderAddress, sender_passphrase: senderPassphrase,
-      recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei});
+      recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei, options: oThis.options});
 
     var response = await transferObj.perform();
 

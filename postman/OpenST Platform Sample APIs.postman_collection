@@ -1,0 +1,512 @@
+{
+	"variables": [],
+	"info": {
+		"name": "OpenST Platform Sample APIs",
+		"_postman_id": "c3c8d1d9-0602-40b5-3dd4-6174ce30ac2d",
+		"description": "OpenST Platform sample restful api implementation https://openst.org",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Health Check",
+			"request": {
+				"url": "{{route}}",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Branded Token Details",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/details?uuid={{uuid}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"details"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reserve Address",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/reserve?uuid={{uuid}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"reserve"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reserve Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/balanceOf?uuid={{uuid}}&address={{reserve}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"balanceOf"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						},
+						{
+							"key": "address",
+							"value": "{{reserve}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reserve Gas Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/gas-balance?address={{reserve}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"gas-balance"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "{{reserve}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create User1",
+			"request": {
+				"url": "{{route}}/bt/users/create",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User1 Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/balanceOf?uuid={{uuid}}&address={{user1}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"balanceOf"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						},
+						{
+							"key": "address",
+							"value": "{{user1}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User1 Gas Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/gas-balance?address={{user1}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"gas-balance"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "{{user1}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create User2",
+			"request": {
+				"url": "{{route}}/bt/users/create",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User2 Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/balanceOf?uuid={{uuid}}&address={{user2}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"balanceOf"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						},
+						{
+							"key": "address",
+							"value": "{{user2}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User2 Gas Balance",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/gas-balance?address={{user2}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"gas-balance"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "{{user2}}"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer BT From Reserve To User1",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/transfer?uuid={{uuid}}&sender={{reserve}}&recipient={{user1}}&amount=2&options[tag]={{tag}}&options[returnType]={{returnType}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "sender",
+							"value": "{{reserve}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "recipient",
+							"value": "{{user1}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "amount",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[tag]",
+							"value": "{{tag}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[returnType]",
+							"value": "{{returnType}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Gas From Reserve To User1",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/transfer-gas?uuid={{uuid}}&sender={{reserve}}&recipient={{user1}}&amount=2&options[tag]={{tag}}&options[returnType]={{returnType}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"transfer-gas"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "sender",
+							"value": "{{reserve}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "recipient",
+							"value": "{{user1}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "amount",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[tag]",
+							"value": "{{tag}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[returnType]",
+							"value": "{{returnType}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction logs",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/logs?transaction_hash=",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "transaction_hash",
+							"value": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer BT From User1 to User2",
+			"request": {
+				"url": {
+					"raw": "{{route}}/bt/transfer?uuid={{uuid}}&sender={{user1}}&recipient={{user2}}&amount=1.5&options[tag]={{tag}}&options[returnType]={{returnType}}",
+					"host": [
+						"{{route}}"
+					],
+					"path": [
+						"bt",
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "sender",
+							"value": "{{user1}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "recipient",
+							"value": "{{user2}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "amount",
+							"value": "1.5",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[tag]",
+							"value": "{{tag}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "options[returnType]",
+							"value": "{{returnType}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
