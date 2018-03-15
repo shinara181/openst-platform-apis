@@ -6,8 +6,8 @@
  * @module services/utils/get_transaction_logs
  */
 
-  const openStPlatform = require('../../../openst-platform/index')
-  , getTransactionReceiptKlass = openStPlatform.services.transaction.getTransactionReceipt
+  const openStPlatform = require('@openstfoundation/openst-platform')
+  , getReceiptKlass = openStPlatform.services.transaction.getReceipt
   ;
 
 /**
@@ -34,7 +34,7 @@ GetTransactionLogsKlass.prototype = {
     const oThis = this;
 
 
-    var getTrxObj = new getTransactionReceiptKlass({chain: "utility", transaction_hash: oThis.transactionHash});
+    var getTrxObj = new getReceiptKlass({chain: "utility", transaction_hash: oThis.transactionHash});
     var response = await getTrxObj.perform();
 
     return Promise.resolve(response);

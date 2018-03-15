@@ -20,7 +20,8 @@
 /**
  * Transfer BT from sender to recipient for a given UUID in utility chain
  *
- * @param {object} params - this is object with keys - sender - Sender Address, recipient - Recipient Address, amount - Amount, UUID (BT UUID)
+ * @param {object} params - this is object with keys - sender - Sender Address,
+ * recipient - Recipient Address, amount - Amount, UUID (BT UUID), options: {tag: TransactionType like upvote}
  *
  * @constructor
  */
@@ -31,6 +32,7 @@ const TransferBTKlass = function(params){
   oThis.senderAddress = params.sender;
   oThis.recipientAddress = params.recipient;
   oThis.amount = params.amount;
+  oThis.options = params.options;
 };
 
 TransferBTKlass.prototype = {
@@ -50,7 +52,6 @@ TransferBTKlass.prototype = {
 
     // Convert amount in wei
     var amountInWei = new BigNumber(oThis.amount).mul((new BigNumber(10)).pow(18));
-    console.log(amountInWei);
 
     // Get config object for given uuid
     var configObj = new getBTAddressKlass({address_type: "ERC20", uuid: oThis.uuid, full_config: 1});
@@ -66,7 +67,7 @@ TransferBTKlass.prototype = {
     // Transfer branded token from sender to recipient
     var transferObj = new transferBTKlass({erc20_address: configResponse.data["ERC20"],
       sender_address: oThis.senderAddress, sender_passphrase: senderPassphrase,
-      recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei});
+      recipient_address: oThis.recipientAddress, amount_in_wei: amountInWei, options: oThis.options});
 
     var response = await transferObj.perform();
 

@@ -6,7 +6,7 @@
  * @module services/branded_token/get_balance
  */
 
-  const openStPlatform = require('../../../openst-platform/index')
+  const openStPlatform = require('@openstfoundation/openst-platform')
   , openStGetBalanceKlass = openStPlatform.services.balance.brandedToken
   , getBTAddressKlass = require('./get_bt_address')
   ;
